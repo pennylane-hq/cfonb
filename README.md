@@ -1,9 +1,10 @@
-# CFONB120 Parser
+# CFONB Parser
 
-This parser aim at simplifying the parsing of CFONB120 files.
-Which are files structured with 120 characters lines containing mostly bank statements.
+This parser aim at simplifying the parsing of CFONB structured files.
+Which are files structured with either 120 or 240 characters lines containing mostly bank statements.
+We aimed here only at the 120 characters version.
 
-What CFONB means ?  `Comité Français d’Organisation et de Normalisation Bancaire`
+What CFONB means ? `Comité Français d’Organisation et de Normalisation Bancaire`
 
 ## Requirements
 
@@ -21,7 +22,6 @@ Or, put it in your Gemfile:
 gem 'cfonb'
 ```
 
-
 ## Available Operation Details
 
 `OperationDetail` are lines starting with `05`. They aim at providing additional information about the operation.
@@ -34,18 +34,18 @@ We aimed at making it as easy as possible to add new details. You just need to d
 CFONB120::OperationDetail.register('FEE', self)
 ```
 
-| Detail Code | Attributes | Description |
-| --- | --- | --- |
-| FEE | `fee`, `fee_currency` | Represents operation fees the bank is applying |
-| LCC | `unstructured_label` | Not structured label line 1 (first 70 characters) |
-| LC2 | `unstructured_label_2` | Not structured label line 2 (last 70 characters) |
-| LCS | `structured_label` | Structured label |
-| LIB | `free_label` | Free label |
-| MMO | `original_currency`, `original_amount`, `scale`, `exchange_rate`, `exchange_rate_scale` | Amount and currency if it has been converted from a foreign currency |
-| NBE | `creditor` | Name of the creditor or beneficiary |
-| NPY | `debtor` | Name of the debtor or payer |
-| RCN | `reference`, `purpose` | Client reference and Payment nature/purpose |
-| REF | `operation_reference` | Bank operation reference |
+| Detail Code | Attributes                                                                              | Description                                                          |
+| ----------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| FEE         | `fee`, `fee_currency`                                                                   | Represents operation fees the bank is applying                       |
+| LCC         | `unstructured_label`                                                                    | Not structured label line 1 (first 70 characters)                    |
+| LC2         | `unstructured_label_2`                                                                  | Not structured label line 2 (last 70 characters)                     |
+| LCS         | `structured_label`                                                                      | Structured label                                                     |
+| LIB         | `free_label`                                                                            | Free label                                                           |
+| MMO         | `original_currency`, `original_amount`, `scale`, `exchange_rate`, `exchange_rate_scale` | Amount and currency if it has been converted from a foreign currency |
+| NBE         | `creditor`                                                                              | Name of the creditor or beneficiary                                  |
+| NPY         | `debtor`                                                                                | Name of the debtor or payer                                          |
+| RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                          |
+| REF         | `operation_reference`                                                                   | Bank operation reference                                             |
 
 TODO:
 | Detail Code | Attributes | Description |
