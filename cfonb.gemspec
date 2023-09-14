@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.email       = ''
   s.files       = ['lib/cfonb.rb']
   s.homepage    =
-    'https://rubygems.org/gems/cfonb'
+    'https://github.com/pennylane-hq/cfonb'
   s.license = 'MIT'
 end
