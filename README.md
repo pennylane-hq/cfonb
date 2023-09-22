@@ -31,7 +31,7 @@ If you encouter new ones, please open an issue or a pull request with the approp
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
-CFONB120::OperationDetail.register('FEE', self)
+CFONB::OperationDetail.register('FEE', self)
 ```
 
 | Detail Code | Attributes                                                                              | Description                                                          |
@@ -64,8 +64,8 @@ TODO:
 require 'cfonb'
 
 # Parse a file
-text = File.open('spec/fixtures/CFONB120.txt')
-cfonb = CFONB::120::Parser.parse(text)
+text = File.open('spec/files/example.txt')
+cfonb = CFONB::Parser.parse(text)
 ```
 
 ## Contributing
