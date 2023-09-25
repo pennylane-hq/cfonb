@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = 'An easy to use CFONB format parser'
   s.authors     = ['Johan Le Bray', 'Frantisek Rokusek']
   s.email       = ''
-  s.files       = ['lib/cfonb.rb']
+  s.files       = Dir["{lib,spec}/**/*.rb"]
   s.homepage    =
     'https://github.com/pennylane-hq/cfonb'
   s.license = 'MIT'
