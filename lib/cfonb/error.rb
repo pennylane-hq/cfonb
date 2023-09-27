@@ -12,4 +12,8 @@ module CFONB
   class UnstartedOperationError < ParserError; end
 
   class UnfinishedStatementError < ParserError; end
+
+  class AlreadyDefinedOperationError < ParserError; end
+
+  class UnhandledLineCodeError < ParserError; end
 end
