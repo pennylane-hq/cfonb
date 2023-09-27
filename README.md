@@ -8,7 +8,7 @@ What CFONB means ? `Comité Français d’Organisation et de Normalisation Banca
 
 ## Requirements
 
-None.
+None for now.
 
 ## Installation
 
