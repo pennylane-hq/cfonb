@@ -2,6 +2,10 @@
 
 module CFONB
   class Operation
+    class AlreadyDefinedOperationError < StandardError; end
+    class UnstartedOperationError < StandardError; end
+    class UnhandledLineCodeError < StandardError; end
+
     BASE_ATTRIBUTES = %i[
       raw
       amount
@@ -19,6 +23,34 @@ module CFONB
     ].freeze
 
     attr_accessor(*BASE_ATTRIBUTES)
+
+    def self.parse(input)
+      current_operation = nil
+
+      input.each_line do |line|
+        (line.size / 120).times do |index|
+          start = index * 120
+          finish = start + 119
+
+          line = CFONB120::LineParser.parse(line[start..finish])
+
+          case line.code
+          when '04'
+            raise AlreadyDefinedOperationError if current_operation
+
+            current_operation = new(line)
+          when '05'
+            raise UnstartedOperationError unless current_operation
+
+            current_operation.merge_detail(line)
+          else
+            raise UnhandledLineCodeError
+          end
+        end
+      end
+
+      current_operation
+    end
 
     def initialize(line)
       self.raw = line.body
