@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'cfonb'
-require 'byebug'
 
 describe CFONB::Parser do
   describe '.parse' do

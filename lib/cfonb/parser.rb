@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 module CFONB
   class Parser
     using CFONB::Refinements::Strings
