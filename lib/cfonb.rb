@@ -30,4 +30,8 @@ module CFONB
   def self.parse(input, optimistic: false)
     Parser.new(input).parse(optimistic: optimistic)
   end
+
+  def self.parse_operation(input, optimistic: false)
+    Parser.new(input).parse_operation(optimistic: optimistic)
+  end
 end

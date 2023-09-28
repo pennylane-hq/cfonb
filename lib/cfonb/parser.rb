@@ -26,6 +26,15 @@ module CFONB
       statements
     end
 
+    def parse_operation(optimistic: false)
+      @current_operation = nil
+      @optimistic = optimistic
+
+      each_line { parse_operation_line(_1) }
+
+      current_operation
+    end
+
     private
 
     attr_reader :input, :statements, :current_statement, :current_operation, :optimistic
@@ -73,6 +82,23 @@ module CFONB
       end
     rescue CFONB::ParserError => e
       handle_error(e)
+    end
+
+    def parse_operation_line(line)
+      line = CFONB::LineParser.parse(line)
+
+      case line.code
+      when OPERATION_CODE
+        return handle_error(AlreadyDefinedOperationError) if current_operation
+
+        @current_operation = CFONB::Operation.new(line)
+      when OPERATION_DETAIL_CODE
+        return handle_error(UnstartedOperationError) unless current_operation
+
+        current_operation.merge_detail(line)
+      else
+        return handle_error(UnhandledLineCodeError)
+      end
     end
 
     def handle_error(error)

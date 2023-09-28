@@ -467,4 +467,152 @@ describe CFONB::Parser do
       end
     end
   end
+
+  describe '.parse_operation' do
+    subject(:operation) { described_class.new(input).parse_operation }
+
+    let(:input) { File.read('spec/files/operation.txt') }
+
+    context 'with a valid input' do
+      it 'returns CFONB::Operation' do
+        expect(operation).to be_an_instance_of(CFONB::Operation)
+      end
+
+      it 'parses correctly' do
+        expect(operation).to have_attributes(
+          amount: -32.21,
+          currency: 'EUR',
+          date: Date.new(2019, 5, 16),
+          exoneration_code: '0',
+          interbank_code: 'B1',
+          internal_code: '9162',
+          label: "PRLV SEPA TEST CABINET\nMENSUEAUHTR13133",
+          number: 0,
+          reference: 'REFERENCE - OTHER REFERENCE',
+          rejection_code: '',
+          unavailability_code: '0',
+          value_date: Date.new(2019, 5, 16),
+          original_currency: nil,
+          original_amount: nil,
+          debtor: 'INTERNET SFR'
+        )
+      end
+    end
+
+    context 'with an already defined operation' do
+      let(:input) { File.read('spec/files/operation_already_defined.txt') }
+
+      it 'raises AlreadyDefinedOperationError' do
+        expect do
+          operation
+        end.to raise_error(CFONB::AlreadyDefinedOperationError)
+      end
+    end
+
+    context 'with an unstarted operation' do
+      let(:input) { File.read('spec/files/operation_unstarted.txt') }
+
+      it 'raises UnstartedOperationError' do
+        expect do
+          operation
+        end.to raise_error(CFONB::UnstartedOperationError)
+      end
+    end
+
+    context 'with an unhandled line code' do
+      let(:input) { File.read('spec/files/example.txt') }
+
+      it 'raises UnhandledLineCodeError' do
+        expect do
+          operation
+        end.to raise_error(CFONB::UnhandledLineCodeError)
+      end
+    end
+
+    context 'with an optimistic parse' do
+      subject(:operation) { described_class.new(input).parse_operation(optimistic: true) }
+
+      context 'with a valid input' do
+        it 'returns CFONB::Operation' do
+          expect(operation).to be_an_instance_of(CFONB::Operation)
+        end
+
+        it 'parses correctly' do
+          expect(operation).to have_attributes(
+            amount: -32.21,
+            currency: 'EUR',
+            date: Date.new(2019, 5, 16),
+            exoneration_code: '0',
+            interbank_code: 'B1',
+            internal_code: '9162',
+            label: "PRLV SEPA TEST CABINET\nMENSUEAUHTR13133",
+            number: 0,
+            reference: 'REFERENCE - OTHER REFERENCE',
+            rejection_code: '',
+            unavailability_code: '0',
+            value_date: Date.new(2019, 5, 16),
+            original_currency: nil,
+            original_amount: nil,
+            debtor: 'INTERNET SFR'
+          )
+        end
+      end
+
+      context 'with an already defined operation' do
+        let(:input) { File.read('spec/files/operation_already_defined.txt') }
+
+        it 'ignores the second operation' do
+          expect(operation).to have_attributes(
+            amount: -32.21,
+            currency: 'EUR',
+            date: Date.new(2019, 5, 16),
+            exoneration_code: '0',
+            interbank_code: 'B1',
+            internal_code: '9162',
+            label: "PRLV SEPA TEST CABINET\nMENSUEAUHTR13133",
+            number: 0,
+            reference: 'REFERENCE - OTHER REFERENCE',
+            rejection_code: '',
+            unavailability_code: '0',
+            value_date: Date.new(2019, 5, 16),
+            original_currency: nil,
+            original_amount: nil,
+            debtor: 'INTERNET SFR'
+          )
+        end
+      end
+
+      context 'with an unstarted operation' do
+        let(:input) { File.read('spec/files/operation_unstarted.txt') }
+
+        it 'returns no operation' do
+          expect(operation).to be_nil
+        end
+      end
+
+      context 'with an unhandled line code' do
+        let(:input) { File.read('spec/files/example.txt') }
+
+        it 'ignores the unhandled lines' do
+          expect(operation).to have_attributes(
+            amount: -32.21,
+            currency: 'EUR',
+            date: Date.new(2019, 5, 16),
+            exoneration_code: '0',
+            interbank_code: 'B1',
+            internal_code: '9162',
+            label: "PRLV SEPA TEST CABINET\nMENSUEAUHTR13133\nP051928612   22793301700040",
+            number: 0,
+            reference: 'REFERENCE - OTHER REFERENCE',
+            rejection_code: '',
+            unavailability_code: '0',
+            value_date: Date.new(2019, 5, 16),
+            original_currency: nil,
+            original_amount: nil,
+            debtor: 'ELEC ERDF'
+          )
+        end
+      end
+    end
+  end
 end
