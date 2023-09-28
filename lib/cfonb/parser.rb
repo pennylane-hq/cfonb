@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'byebug'
+
 module CFONB
   class Parser
     using CFONB::Refinements::Strings
@@ -30,7 +32,7 @@ module CFONB
       @current_operation = nil
       @optimistic = optimistic
 
-      each_line { parse_operation(_1) }
+      each_line { parse_operation_line(_1) }
 
       current_operation
     end
@@ -84,7 +86,9 @@ module CFONB
       handle_error(e)
     end
 
-    def parse_operation(line)
+    def parse_operation_line(line)
+      line = CFONB::LineParser.parse(line)
+
       case line.code
       when OPERATION_CODE
         return handle_error(AlreadyDefinedOperationError) if current_operation
