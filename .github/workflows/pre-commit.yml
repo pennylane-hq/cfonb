@@ -54,3 +54,7 @@ jobs:
       - name: Run license checks
         run: |
           pre-commit run license_checks --files doc/dependency_decisions.yml
+
+      - name: Run specs
+        run: |
+          rspec
