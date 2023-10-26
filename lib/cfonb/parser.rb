@@ -8,7 +8,7 @@ module CFONB
       PREVIOUS_BALANCE_CODE = '01',
       OPERATION_CODE = '04',
       OPERATION_DETAIL_CODE = '05',
-      NEW_BALANCE_CODE = '07'
+      NEW_BALANCE_CODE = '07',
     ].freeze
 
     def initialize(input)
@@ -52,7 +52,7 @@ module CFONB
 
     def parse_line(line)
       return if line.strip.empty?
-      raise InvalidCodeError, "Invalid line code '#{line.first(2)}'" unless CODES.include?(line.first(2))
+      raise InvalidCodeError.new("Invalid line code '#{line.first(2)}'") unless CODES.include?(line.first(2))
 
       line = CFONB::LineParser.parse(line)
 
@@ -97,7 +97,7 @@ module CFONB
 
         current_operation.merge_detail(line)
       else
-        return handle_error(UnhandledLineCodeError)
+        handle_error(UnhandledLineCodeError)
       end
     end
 

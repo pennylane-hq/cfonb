@@ -1,4 +1,5 @@
 ---
+
 Layout/BlockAlignment:
   EnforcedStyleAlignWith: start_of_block
 
@@ -108,47 +109,6 @@ Naming/InclusiveLanguage:
 
 Naming/VariableNumber:
   Enabled: false
-
-RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/ExampleWording:
-  DisallowedExamples:
-  - works
-  - does not work
-  - works as expected
-  - does something
-  - succeeds
-
-RSpec/IndexedLet:
-  Enabled: false
-
-RSpec/InstanceVariable:
-  Enabled: true
-
-RSpec/LetSetup:
-  Enabled: false
-
-RSpec/MessageChain:
-  Enabled: true
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Max: 8
-
-RSpec/Pending:
-  Enabled: true
-
-RSpec/StubbedMock:
-  Enabled: false
-
-RSpec/VerifiedDoubles:
-  Enabled: true
 
 Style/ArgumentsForwarding:
   Enabled: false

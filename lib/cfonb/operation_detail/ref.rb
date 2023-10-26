@@ -10,7 +10,7 @@ module CFONB
       def self.apply(operation, line)
         operation.reference = [
           operation.reference,
-          line.detail.strip
+          line.detail.strip,
         ].filter_map(&:presence).join(' - ')
       end
 

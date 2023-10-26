@@ -13,7 +13,7 @@ describe CFONB::Operation do
       date: Date.new(2021, 3, 5),
       currency: 'EUR',
       amount: -15,
-      reference: '42'
+      reference: '42',
     )
   end
 
@@ -88,7 +88,7 @@ describe CFONB::Operation do
 
         expect(operation).to have_attributes(
           original_currency: 'USD',
-          original_amount: -12.34
+          original_amount: -12.34,
         )
       end
     end
@@ -118,7 +118,7 @@ describe CFONB::Operation do
         OpenStruct.new(
           body: '',
           detail_code: 'RCN',
-          detail: 'SWILE-CMD-TR-YPDHMA                TICKET RESTO                       '
+          detail: 'SWILE-CMD-TR-YPDHMA                TICKET RESTO                       ',
         )
       end
 
@@ -135,7 +135,7 @@ describe CFONB::Operation do
         OpenStruct.new(
           body: '0530002112701731EUR2E0000073337DA129082300   REFPENNYLANE B13A93908C36C82DF5C319/1                                      ',
           detail_code: 'REF',
-          detail: 'PENNYLANE B13A93908C36C82DF5C319/1                                      '
+          detail: 'PENNYLANE B13A93908C36C82DF5C319/1                                      ',
         )
       end
 
@@ -151,7 +151,7 @@ describe CFONB::Operation do
         OpenStruct.new(
           body: '0530004411001871EUR2 0001016255614090823     FEEEUR200000000000740',
           detail_code: 'FEE',
-          detail: 'EUR200000000000740'
+          detail: 'EUR200000000000740',
         )
       end
 

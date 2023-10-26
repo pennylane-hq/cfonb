@@ -7,7 +7,7 @@ module CFONB
         ['internal_operation_code', (7..10)],
         ['interbank_operation_code', (32..33)],
         ['detail_code', (45..47)],
-        ['detail', (48..117)]
+        ['detail', (48..117)],
       ].freeze
 
       attr_reader(*DICTIONARY.map(&:first))

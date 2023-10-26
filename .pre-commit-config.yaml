@@ -1,0 +1,94 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files
+      - id: fix-byte-order-marker
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+        exclude: (?x)(
+          \.yarn/|
+          spec/files/)
+
+  - repo: https://github.com/tdeo/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: end-of-file-fixer
+        exclude: spec/files/
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.8.0.1
+    hooks:
+      - id: shellcheck
+
+  - repo: local
+    hooks:
+      - id: do_not_commit
+        name: Break on DO NOT COMMIT comment
+        language: pygrep
+        entry: (?i)(NOT.{,3}COMMIT)
+        exclude: (?x)(
+          .pre-commit-config.yaml|
+          README.md)
+      - id: rubocop
+        name: Rubocop
+        language: system
+        entry: bash -c 'bundle exec rubocop ${RUBOCOP_OPTIONS:---autocorrect} "$@"' --
+        require_serial: true # for proper cache behavior
+        files: (?x)(
+          \.(rb|rake|jbuilder|gemspec)$|
+          Gemfile$|
+          Rakefile|
+          .irbrc$)
+        args:
+          - --color
+          - --server
+          - --config=.rubocop.yml
+          - --fail-level=convention
+      - id: ruboclean
+        name: Ruboclean
+        language: system
+        entry: bundle exec ruboclean
+        files: ^\.rubocop.*\.yml$
+        args:
+          - --silent
+          - --preserve-comments
+      - id: ruby
+        name: Valid ruby syntax
+        language: system
+        entry: ruby -c
+        files: \.rb$
+        exclude: lib/templates/rspec/
+      - id: prettier
+        name: Prettier
+        language: system
+        entry: npx prettier --write
+        files: \.(js|jsx|ts|tsx|mjs)$
+      - id: prettier-json
+        name: Prettier JSON
+        language: system
+        entry: npx prettier --parser json --write
+        files: \.json$
+      - id: prettier-yaml
+        name: Prettier YAML
+        language: system
+        entry: npx prettier --parser yaml --write
+        files: \.ya?ml$
+        exclude: ^\.rubocop\.yml
+      - id: prettier-mdx
+        name: Prettier MDX
+        language: system
+        entry: npx prettier --parser mdx --write
+        files: \.mdx?$
+      - id: whitespaces
+        name: No non-breaking spaces
+        language: pygrep
+        entry: \\u00A0 # Non-breaking space
+        exclude: (?x)^(
+          \.yarn/releases/|
+          \.pre-commit-config\.yaml)
+      - id: license_checks
+        name: License checks
+        language: system
+        entry: .pre-commit/check_license.sh
+        files: ^doc/dependency_decisions\.yml$
+        pass_filenames: false

@@ -19,7 +19,7 @@ describe CFONB::LineParser::PreviousBalance do
         'scale' => 2,
         'account' => '98765432100',
         'date' => Date.new(2019, 5, 15),
-        'amount' => -190.43
+        'amount' => -190.43,
       )
     end
   end

@@ -28,7 +28,7 @@ describe CFONB::LineParser::Operation do
         'number' => 7_654_321,
         'exoneration_code' => 'U',
         'unavailability_code' => 'P',
-        'reference' => 'XYZ123'
+        'reference' => 'XYZ123',
       )
     end
   end
