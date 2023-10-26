@@ -58,11 +58,6 @@ repos:
         entry: ruby -c
         files: \.rb$
         exclude: lib/templates/rspec/
-      - id: prettier
-        name: Prettier
-        language: system
-        entry: npx prettier --write
-        files: \.(js|jsx|ts|tsx|mjs)$
       - id: prettier-json
         name: Prettier JSON
         language: system
