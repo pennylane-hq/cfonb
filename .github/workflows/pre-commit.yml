@@ -13,8 +13,17 @@ jobs:
       - name: Setup Environment
         run: |
           echo "NODE_VERSION=18.18.0" >> $GITHUB_ENV
+          echo "PYTHON_VERSION=$(cat .tool-versions | grep -Po '(?<=python ).*')" >> $GITHUB_ENV
           if [ $GITHUB_REF == 'refs/heads/master' ]; then echo "ENV=prod"; else echo "ENV=staging"; fi >> $GITHUB_ENV
           echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*\/}" >> $GITHUB_ENV
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Store python version details for cache
+        run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> "$GITHUB_ENV"
 
       - name: Pre-commit installation cache
         uses: actions/cache@v3
