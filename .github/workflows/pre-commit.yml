@@ -14,8 +14,17 @@ jobs:
         run: |
           echo "NODE_VERSION=18.18.0" >> $GITHUB_ENV
           echo "PYTHON_VERSION=$(cat .tool-versions | grep -Po '(?<=python ).*')" >> $GITHUB_ENV
+          echo "RUBY_VERSION=$(cat .tool-versions | grep -Po '(?<=ruby ).*')" >> $GITHUB_ENV
           if [ $GITHUB_REF == 'refs/heads/master' ]; then echo "ENV=prod"; else echo "ENV=staging"; fi >> $GITHUB_ENV
           echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*\/}" >> $GITHUB_ENV
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: Install Ruby dependencies
+        run: bundle install
 
       - name: Install Python
         uses: actions/setup-python@v4
