@@ -5,12 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-# License
-gem 'license_finder', require: false
+group :development do
+  # License
+  gem 'license_finder', require: false
 
-# Linting
-gem 'ruboclean', require: false
-gem 'rubocop', require: false
+  # Testing
+  gem 'rspec'
 
-# Testing
-gem 'rspec'
+  # Linting
+  gem 'ruboclean', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+end
