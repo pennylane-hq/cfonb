@@ -1,0 +1,195 @@
+---
+- - :ignore
+  - bundler
+  - :who: Security Team
+    :why: We don't want to track dependencies related to bundler
+    :versions: []
+    :when: 2023-01-04 10:36:26.354664000 Z
+- - :permit
+  - Apache 2.0
+  - :who: Security Team
+    :why: Nothing prevents us from using Software under an Apache 2.0 license
+    :versions: []
+    :when: 2023-01-04 11:08:39.243579000 Z
+- - :permit
+  - Apache License (2.0)
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under an Apache License (2.0)
+    :versions: []
+    :when: 2023-01-04 11:21:08.088008000 Z
+- - :permit
+  - BlueOak-1.0.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a BlueOak-1.0.0 license
+    :versions: []
+    :when: 2023-04-05 19:52:06.395699000 Z
+- - :permit
+  - BSD
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a BSD license
+    :versions: []
+    :when: 2023-02-15 15:55:40.230856000 Z
+- - :permit
+  - BSD Zero Clause License
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a BSD Zero Clause License
+    :versions: []
+    :when: 2023-01-04 11:11:14.266822000 Z
+- - :permit
+  - CC0-1.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a CC0-1.0 license
+    :versions: []
+    :when: 2023-01-04 11:22:38.314535000 Z
+- - :permit
+  - CC-BY-3.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a CC-BY-3.0 license
+    :versions: []
+    :when: 2023-01-04 13:32:05.258670000 Z
+- - :permit
+  - CC-BY-4.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a CC-BY-4.0 license
+    :versions: []
+    :when: 2023-01-04 11:29:42.668183000 Z
+- - :permit
+  - GNU GENERAL PUBLIC LICENSE
+  - :who: Security Team
+    :why:
+      Nothing prevents us from using a Software under a General Public License
+      (GPL)
+    :versions: []
+    :when: 2023-02-15 15:55:52.568378000 Z
+- - :permit
+  - GPL-2
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a GPL-2 license
+    :versions: []
+    :when: 2023-01-04 11:17:00.070704000 Z
+- - :permit
+  - GPL-2.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a GPL-2.0 license
+    :versions: []
+    :when: 2023-01-04 11:12:14.638096000 Z
+- - :permit
+  - GPL-3.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a GPL-3.0 license
+    :versions: []
+    :when: 2023-01-04 11:12:43.464889000 Z
+- - :permit
+  - Hippocratic-2.1
+  - :who: Security Team
+    :why:
+      Nothing prevents us from using an Hippocratic-2.1 license given that our
+      activity is ethical
+    :versions: []
+    :when: 2023-02-15 16:19:19.242388000 Z
+- - :permit
+  - ISC
+  - :who: Security Team
+    :why: Nothing prevents us from using Software under an ISC license
+    :versions: []
+    :when: 2023-01-04 11:05:37.200861000 Z
+- - :permit
+  - LGPL
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under an LGPL license
+    :versions: []
+    :when: 2023-01-04 11:17:06.043252000 Z
+- - :permit
+  - LGPLv2+
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under an LGPLv2+ license
+    :versions: []
+    :when: 2023-01-04 11:19:18.276262000 Z
+- - :permit
+  - LGPLv3+
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under an LGPLv3+ license
+    :versions: []
+    :when: 2023-01-04 11:23:47.785431000 Z
+- - :permit
+  - MIT
+  - :who: Security Team
+    :why: Nothing prevents us from using Software under an MIT license
+    :versions: []
+    :when: 2023-01-04 10:47:24.811127000 Z
+- - :permit
+  - Mozilla Public License 2.0
+  - :who: Security Team
+    :why:
+      Nothing prevents us from using a Software under a Mozilla Public License
+      2.0
+    :versions: []
+    :when: 2023-01-04 11:20:39.327719000 Z
+- - :permit
+  - MPL2.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under an MPL2.0 license
+    :versions: []
+    :when: 2023-01-04 11:27:17.192220000 Z
+- - :permit
+  - New BSD
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a New BSD license
+    :versions: []
+    :when: 2023-01-04 11:13:57.645677000 Z
+- - :permit
+  - Public Domain
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a Public Domain license
+    :versions: []
+    :when: 2023-01-04 11:21:32.054670000 Z
+- - :permit
+  - Python-2.0
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a Python-2.0 license
+    :versions: []
+    :when: 2023-01-04 13:38:06.455027000 Z
+- - :permit
+  - ruby
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a Ruby license
+    :versions: []
+    :when: 2023-01-04 13:39:29.337769000 Z
+- - :permit
+  - Simplified BSD
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a Simplified BSD license
+    :versions: []
+    :when: 2023-01-04 11:09:56.255153000 Z
+- - :permit
+  - Unlicense
+  - :who: Security Team
+    :why:
+      Nothing prevents us from using a Software under an Unlicense as it similar
+      to Public Domain
+    :versions: []
+    :when: 2023-01-04 13:29:39.503157000 Z
+- - :permit
+  - WTFPL
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a WTFPL license
+    :versions: []
+    :when: 2023-01-04 11:22:03.357868000 Z
+- - :permit
+  - Zlib
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a Zlib license
+    :versions: []
+    :when: 2023-02-15 15:56:37.443260000 Z
+- - :permit
+  - 2-clause BSDL
+  - :who: Security Team
+    :why: Nothing prevents us from using a Software under a 2-clause BSDL license
+    :versions: []
+    :when: 2023-01-04 11:19:59.403946000 Z
+- - :permit
+  - EPL-2.0
+  - :who: Legal team
+    :why: Nothing prevents us from using a Software under a EPL-2.0 license
+    :versions: []
+    :when: 2023-07-05 12:43:05.575246000 Z

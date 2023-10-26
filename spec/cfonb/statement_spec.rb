@@ -5,8 +5,8 @@ require 'cfonb'
 describe CFONB::Statement do
   subject(:statement) do
     described_class.new(begin_line)
-                   .tap { _1.operations << operation }
-                   .tap { _1.merge_new_balance(end_line) }
+      .tap { _1.operations << operation }
+      .tap { _1.merge_new_balance(end_line) }
   end
 
   let(:operation) do
@@ -17,22 +17,22 @@ describe CFONB::Statement do
 
   let(:begin_line) do
     CFONB::LineParser.parse(
-      '0115589    00000EUR2 98765432100  150519                                                  0000000001904}150519160519    '
+      '0115589    00000EUR2 98765432100  150519                                                  0000000001904}150519160519    ',
     )
   end
   let(:operation_line) do
     CFONB::LineParser.parse(
-      '0415589916200000EUR2 98765432100B1160519  160519PRLV SEPA TEST CABINET           0000000000000000000322J                '
+      '0415589916200000EUR2 98765432100B1160519  160519PRLV SEPA TEST CABINET           0000000000000000000322J                ',
     )
   end
   let(:detail_line) do
     CFONB::LineParser.parse(
-      '0515589916200000EUR2 98765432100B1160519     LIBMENSUEAUHTR13133                                                        '
+      '0515589916200000EUR2 98765432100B1160519     LIBMENSUEAUHTR13133                                                        ',
     )
   end
   let(:end_line) do
     CFONB::LineParser.parse(
-      '0715489    00000EUR2 98765432100  160519                                                  0000000002412J                '
+      '0715489    00000EUR2 98765432100  160519                                                  0000000002412J                ',
     )
   end
 

@@ -13,7 +13,7 @@ module CFONB
         ['exoneration_code', 88],
         ['unavailability_code', 89],
         ['reference', (104..119)],
-        ['amount', (90..103), proc { |value, instance| instance.send(:parse_amount, value) }]
+        ['amount', (90..103), proc { |value, instance| instance.send(:parse_amount, value) }],
       ].freeze
 
       attr_reader(*DICTIONARY.map(&:first))

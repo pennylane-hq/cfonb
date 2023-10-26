@@ -14,7 +14,7 @@ module CFONB
         ['currency', (16..18)],
         ['scale', 19, proc { _1.to_i }],
         ['account', (21..31)],
-        ['date', (34..39), proc { |value, instance| instance.send(:parse_date, value) }]
+        ['date', (34..39), proc { |value, instance| instance.send(:parse_date, value) }],
       ].freeze
 
       AMOUNT_SPECIFIERS = {
@@ -37,7 +37,7 @@ module CFONB
         'P' => { sign: -1, value: '7' },
         'Q' => { sign: -1, value: '8' },
         'R' => { sign: -1, value: '9' },
-        '}' => { sign: -1, value: '0' }
+        '}' => { sign: -1, value: '0' },
       }.transform_values(&:freeze).freeze
 
       attr_reader :body, *BASE_DICTIONARY.map(&:first)
@@ -58,7 +58,7 @@ module CFONB
 
       def parse_amount(input)
         specifier = AMOUNT_SPECIFIERS[input.last]
-        raise ParserError, "Invalid specifier '#{input.last}' for line #{input}" unless specifier
+        raise ParserError.new("Invalid specifier '#{input.last}' for line #{input}") unless specifier
 
         specifier[:sign] * BigDecimal(input[0..-2] + specifier[:value]) / (10**scale)
       end
@@ -68,14 +68,14 @@ module CFONB
         return if input.strip.empty?
 
         input_with_year = if input.last(2).to_i > 60
-                            "#{input[0..3]}19#{input[4..5]}"
-                          else
-                            "#{input[0..3]}20#{input[4..5]}"
-                          end
+          "#{input[0..3]}19#{input[4..5]}"
+        else
+          "#{input[0..3]}20#{input[4..5]}"
+        end
 
         Date.strptime(input_with_year, '%d%m%Y')
       rescue Date::Error
-        raise ParserError, "Invalid date '#{input}' for line #{input}"
+        raise ParserError.new("Invalid date '#{input}' for line #{input}")
       end
     end
   end

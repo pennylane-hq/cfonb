@@ -12,7 +12,7 @@ describe CFONB::Parser do
       it 'parses correctly' do
         expect(statements).to contain_exactly(
           an_instance_of(CFONB::Statement),
-          an_instance_of(CFONB::Statement)
+          an_instance_of(CFONB::Statement),
         )
 
         expect(statements[0]).to have_attributes(
@@ -23,7 +23,7 @@ describe CFONB::Parser do
           from: Date.new(2019, 5, 15),
           from_balance: -190.4,
           to: Date.new(2019, 5, 16),
-          to_balance: -241.21
+          to_balance: -241.21,
         )
 
         expect(statements[0].operations.size).to eq(3)
@@ -44,7 +44,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
-          debtor: 'INTERNET SFR'
+          debtor: 'INTERNET SFR',
         )
 
         expect(statements[0].operations[1]).to have_attributes(
@@ -62,7 +62,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
-          debtor: 'ELEC ERDF'
+          debtor: 'ELEC ERDF',
         )
 
         expect(statements[0].operations[2]).to have_attributes(
@@ -79,7 +79,7 @@ describe CFONB::Parser do
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
-          original_amount: nil
+          original_amount: nil,
         )
 
         expect(statements[1]).to have_attributes(
@@ -90,7 +90,7 @@ describe CFONB::Parser do
           from: Date.new(2019, 5, 16),
           from_balance: -241.21,
           to: Date.new(2019, 5, 17),
-          to_balance: -163.72
+          to_balance: -163.72,
         )
 
         expect(statements[1].operations.size).to eq(3)
@@ -109,7 +109,7 @@ describe CFONB::Parser do
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
-          original_amount: nil
+          original_amount: nil,
         )
 
         expect(statements[1].operations[1]).to have_attributes(
@@ -126,7 +126,7 @@ describe CFONB::Parser do
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
-          original_amount: nil
+          original_amount: nil,
         )
 
         expect(statements[1].operations[2]).to have_attributes(
@@ -143,7 +143,7 @@ describe CFONB::Parser do
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
-          original_amount: nil
+          original_amount: nil,
         )
       end
     end
@@ -203,7 +203,7 @@ describe CFONB::Parser do
         it 'parses correctly' do
           expect(statements).to contain_exactly(
             an_instance_of(CFONB::Statement),
-            an_instance_of(CFONB::Statement)
+            an_instance_of(CFONB::Statement),
           )
 
           expect(statements[0]).to have_attributes(
@@ -214,7 +214,7 @@ describe CFONB::Parser do
             from: Date.new(2019, 5, 15),
             from_balance: -190.4,
             to: Date.new(2019, 5, 16),
-            to_balance: -241.21
+            to_balance: -241.21,
           )
 
           expect(statements[0].operations.size).to eq(3)
@@ -234,7 +234,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'INTERNET SFR'
+            debtor: 'INTERNET SFR',
           )
 
           expect(statements[0].operations[1]).to have_attributes(
@@ -252,7 +252,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
 
           expect(statements[0].operations[2]).to have_attributes(
@@ -269,7 +269,7 @@ describe CFONB::Parser do
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
-            original_amount: nil
+            original_amount: nil,
           )
 
           expect(statements[1]).to have_attributes(
@@ -280,7 +280,7 @@ describe CFONB::Parser do
             from: Date.new(2019, 5, 16),
             from_balance: -241.21,
             to: Date.new(2019, 5, 17),
-            to_balance: -163.72
+            to_balance: -163.72,
           )
 
           expect(statements[1].operations.size).to eq(3)
@@ -299,7 +299,7 @@ describe CFONB::Parser do
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
-            original_amount: nil
+            original_amount: nil,
           )
 
           expect(statements[1].operations[1]).to have_attributes(
@@ -316,7 +316,7 @@ describe CFONB::Parser do
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
-            original_amount: nil
+            original_amount: nil,
           )
 
           expect(statements[1].operations[2]).to have_attributes(
@@ -333,7 +333,7 @@ describe CFONB::Parser do
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
-            original_amount: nil
+            original_amount: nil,
           )
         end
       end
@@ -359,7 +359,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -385,7 +385,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -411,7 +411,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -437,7 +437,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
           expect(statements[0].operations[1]).to have_attributes(
             amount: -7.9,
@@ -453,7 +453,7 @@ describe CFONB::Parser do
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
-            original_amount: nil
+            original_amount: nil,
           )
         end
       end
@@ -494,7 +494,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
-          debtor: 'INTERNET SFR'
+          debtor: 'INTERNET SFR',
         )
       end
     end
@@ -553,7 +553,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'INTERNET SFR'
+            debtor: 'INTERNET SFR',
           )
         end
       end
@@ -577,7 +577,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'INTERNET SFR'
+            debtor: 'INTERNET SFR',
           )
         end
       end
@@ -609,7 +609,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
-            debtor: 'ELEC ERDF'
+            debtor: 'ELEC ERDF',
           )
         end
       end

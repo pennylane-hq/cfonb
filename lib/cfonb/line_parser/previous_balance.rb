@@ -4,7 +4,7 @@ module CFONB
   module LineParser
     class PreviousBalance < Base
       DICTIONARY = [
-        ['amount', (90..103), proc { |value, instance| instance.send(:parse_amount, value) }]
+        ['amount', (90..103), proc { |value, instance| instance.send(:parse_amount, value) }],
       ].freeze
 
       attr_reader(*DICTIONARY.map(&:first))

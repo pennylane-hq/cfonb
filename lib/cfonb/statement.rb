@@ -9,7 +9,7 @@ module CFONB
         from from_balance
         to to_balance
         operations
-      ]
+      ],
     )
 
     def initialize(line)
@@ -33,7 +33,7 @@ module CFONB
       [
         begin_raw,
         operations.map(&:raw),
-        end_raw
+        end_raw,
       ].join("\n")
     end
 

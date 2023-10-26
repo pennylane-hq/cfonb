@@ -22,7 +22,7 @@ describe CFONB::LineParser::OperationDetail do
         'internal_operation_code' => '9162',
         'interbank_operation_code' => 'B1',
         'detail_code' => 'LIB',
-        'detail' => 'MENSUEAUHTR13133'
+        'detail' => 'MENSUEAUHTR13133',
       )
     end
   end
