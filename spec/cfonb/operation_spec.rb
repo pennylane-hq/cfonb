@@ -159,7 +159,7 @@ describe CFONB::Operation do
         operation.merge_detail(detail)
 
         expect(operation.fee_currency).to eq('EUR')
-        expect(operation.fee).to eq(-7.4)
+        expect(operation.fee).to eq(7.4)
       end
     end
   end
