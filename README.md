@@ -6,6 +6,9 @@ We aimed here only at the 120 characters version.
 
 What CFONB means ? `Comité Français d’Organisation et de Normalisation Bancaire`
 
+Original Document in French 🇫🇷
+[20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf](https://github.com/pennylane-hq/cfonb/files/13307686/20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf)
+
 ## Requirements
 
 None.
