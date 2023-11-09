@@ -81,16 +81,30 @@ describe CFONB::Operation do
     end
 
     context 'with a MMO detail' do
-      let(:detail) { OpenStruct.new(body: '', detail_code: 'MMO', detail: 'USD000000000008358300000001077') }
+      let(:detail) { OpenStruct.new(body: '', detail_code: 'MMO', detail: 'USD200000000001234') }
 
       it 'Adds the original currency information' do
         operation.merge_detail(detail)
 
         expect(operation).to have_attributes(
           original_currency: 'USD',
-          original_amount: -8358,
-          exchange_rate: 1.077,
+          original_amount: -12.34,
+          exchange_rate: nil,
         )
+      end
+
+      context 'with exchange rate' do
+        let(:detail) { OpenStruct.new(body: '', detail_code: 'MMO', detail: 'USD000000000008358300000001077') }
+
+        it 'Adds the original currency information' do
+          operation.merge_detail(detail)
+
+          expect(operation).to have_attributes(
+            original_currency: 'USD',
+            original_amount: -8358,
+            exchange_rate: 1.077,
+          )
+        end
       end
     end
 
