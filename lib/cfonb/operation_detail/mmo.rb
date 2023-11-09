@@ -14,7 +14,6 @@ module CFONB
         sign = operation.amount <=> 0 # the detail amount is unsigned
 
         operation.original_amount = sign * BigDecimal(line.detail[4..17]) / (10**scale)
-        
         operation.exchange_rate = BigDecimal(line.detail[-4..-1]) / 1000
       end
 
