@@ -15,7 +15,10 @@ module CFONB
 
         operation.original_amount = sign * BigDecimal(line.detail[4..17]) / (10**scale)
         exchange_rate_value = line.detail[26..29]
-        operation.exchange_rate = BigDecimal(exchange_rate_value) / 1000 if exchange_rate_value
+        return unless exchange_rate_value
+
+        exchange_rate_scale = line.detail[18]
+        operation.exchange_rate = BigDecimal(exchange_rate_value) / (10**BigDecimal(exchange_rate_scale))
       end
 
       CFONB::OperationDetail.register('MMO', self)
