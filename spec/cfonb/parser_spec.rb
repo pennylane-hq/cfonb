@@ -44,6 +44,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
           debtor: 'INTERNET SFR',
         )
 
@@ -62,6 +63,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
           debtor: 'ELEC ERDF',
         )
 
@@ -80,6 +82,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
         )
 
         expect(statements[1]).to have_attributes(
@@ -110,6 +113,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
         )
 
         expect(statements[1].operations[1]).to have_attributes(
@@ -127,6 +131,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 15),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
         )
 
         expect(statements[1].operations[2]).to have_attributes(
@@ -144,6 +149,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
         )
       end
     end
@@ -234,6 +240,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'INTERNET SFR',
           )
 
@@ -252,6 +259,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
 
@@ -270,6 +278,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
           )
 
           expect(statements[1]).to have_attributes(
@@ -300,6 +309,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
           )
 
           expect(statements[1].operations[1]).to have_attributes(
@@ -317,6 +327,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 15),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
           )
 
           expect(statements[1].operations[2]).to have_attributes(
@@ -334,6 +345,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
           )
         end
       end
@@ -359,6 +371,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
         end
@@ -385,6 +398,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
         end
@@ -411,6 +425,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
         end
@@ -437,6 +452,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
           expect(statements[0].operations[1]).to have_attributes(
@@ -454,6 +470,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
           )
         end
       end
@@ -494,6 +511,7 @@ describe CFONB::Parser do
           value_date: Date.new(2019, 5, 16),
           original_currency: nil,
           original_amount: nil,
+          exchange_rate: nil,
           debtor: 'INTERNET SFR',
         )
       end
@@ -553,6 +571,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'INTERNET SFR',
           )
         end
@@ -577,6 +596,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'INTERNET SFR',
           )
         end
@@ -609,6 +629,7 @@ describe CFONB::Parser do
             value_date: Date.new(2019, 5, 16),
             original_currency: nil,
             original_amount: nil,
+            exchange_rate: nil,
             debtor: 'ELEC ERDF',
           )
         end
