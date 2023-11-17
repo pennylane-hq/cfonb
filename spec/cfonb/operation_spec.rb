@@ -106,6 +106,20 @@ describe CFONB::Operation do
           )
         end
       end
+
+      context 'when exchange rate is missing' do
+        let(:detail) { OpenStruct.new(body: '', detail_code: 'MMO', detail: 'EUR200000001875625             04') }
+
+        it 'Adds the original currency information' do
+          operation.merge_detail(detail)
+
+          expect(operation).to have_attributes(
+            original_currency: 'EUR',
+            original_amount: -18_756.25,
+            exchange_rate: nil,
+          )
+        end
+      end
     end
 
     context 'with a NPY detail' do

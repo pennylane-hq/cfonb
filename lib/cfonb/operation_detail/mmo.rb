@@ -15,7 +15,8 @@ module CFONB
 
         operation.original_amount = sign * BigDecimal(line.detail[4..17]) / (10**scale)
         exchange_rate_value = line.detail[26..29]
-        return if exchange_rate_value.nil? || exchange_rate_value.empty?
+
+        return if exchange_rate_value.nil? || exchange_rate_value.strip.empty?
 
         exchange_rate_scale = line.detail[18]
         operation.exchange_rate = BigDecimal(exchange_rate_value) / (10**BigDecimal(exchange_rate_scale))
