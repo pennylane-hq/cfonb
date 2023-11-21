@@ -68,7 +68,7 @@ require 'cfonb'
 
 # Parse a file
 text = File.open('spec/files/example.txt')
-cfonb = CFONB::Parser.parse(text)
+cfonb = CFONB.parse(text)
 ```
 
 ## Contributing
