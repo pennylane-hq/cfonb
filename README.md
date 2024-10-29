@@ -49,11 +49,11 @@ CFONB::OperationDetail.register('FEE', self)
 | NPY         | `debtor`                                                                                | Name of the debtor or payer                                          |
 | RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                          |
 | REF         | `operation_reference`                                                                   | Bank operation reference                                             |
+| IPY         | `debtor_identifier`, `debtor_identifier_type`                                           | Debtor identifier and debtor identifier type                         |
 
 TODO:
 | Detail Code | Attributes | Description |
 | --- | --- | --- |
-| IPY | `debtor_identifier` | Identifier of the debtor or payer |
 | NPO | `ultimate_debtor` | Name of the ultimate debtor or beneficiary |
 | NBU | `ultimate_creditor` | Name of the ultimate creditor or payer |
 | RET | `unifi_code`, `sit_code`, `payback_label` | Payback informations |
