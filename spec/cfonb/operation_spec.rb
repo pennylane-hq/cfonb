@@ -37,6 +37,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.free_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -50,6 +53,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.unstructured_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -63,6 +69,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.unstructured_label_2).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -76,6 +85,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.structured_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
