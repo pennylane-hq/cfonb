@@ -59,7 +59,6 @@ CFONB::OperationDetails.register('FEE', self)
 TODO:
 | Detail Code | Attributes | Description |
 | --- | --- | --- |
-| IPY | `debtor_identifier` | Identifier of the debtor or payer |
 | NPO | `ultimate_debtor` | Name of the ultimate debtor or beneficiary |
 | NBU | `ultimate_creditor` | Name of the ultimate creditor or payer |
 | RET | `unifi_code`, `sit_code`, `payback_label` | Payback informations |
