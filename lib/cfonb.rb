@@ -27,6 +27,9 @@ require_relative 'cfonb/operation_detail/npy'
 require_relative 'cfonb/operation_detail/rcn'
 require_relative 'cfonb/operation_detail/ref'
 require_relative 'cfonb/operation_detail/fee'
+require_relative 'cfonb/operation_detail/ibe'
+require_relative 'cfonb/operation_detail/npo'
+require_relative 'cfonb/operation_detail/nbu'
 
 module CFONB
   def self.parse(input, optimistic: false)
