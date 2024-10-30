@@ -3,12 +3,10 @@
 module CFONB
   module OperationDetails
     class LCC < Base
-      def self.apply(operation, line)
-        operation.unstructured_label = if operation.unstructured_label.nil?
-          line.detail.strip.to_s
-        else
-          "#{operation.unstructured_label}\n#{line.detail.strip}"
-        end
+      ATTRIBUTES = %i[unstructured_label].freeze
+
+      def self.apply(details, line)
+        details.unstructured_label = line.detail.strip.to_s
       end
 
       CFONB::OperationDetails.register('LCC', self)

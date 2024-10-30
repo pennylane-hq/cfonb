@@ -16,6 +16,7 @@ module CFONB
       rejection_code
       unavailability_code
       value_date
+      details
     ].freeze
 
     attr_accessor(*BASE_ATTRIBUTES)
@@ -33,12 +34,13 @@ module CFONB
       self.value_date = line.value_date
       self.label = line.label.strip
       self.number = line.number
-      self.reference = line.reference
+      self.details = Details.new(line.reference)
     end
 
     def merge_detail(line)
       self.raw += "\n#{line.body}"
-      OperationDetails.for(line)&.apply(self, line)
+
+      OperationDetails.for(line)&.apply(details, line)
     end
 
     def type_code
