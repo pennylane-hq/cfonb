@@ -29,14 +29,14 @@ gem 'cfonb'
 
 ## Available Operation Details
 
-`OperationDetail` are lines starting with `05`. They aim at providing additional information about the operation.
+`OperationDetails` are lines starting with `05`. They aim at providing additional information about the operation.
 
 Find bellow the list of additional details available for each operation.
 If you encouter new ones, please open an issue or a pull request with the appropriate implementation.
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
-CFONB::OperationDetail.register('FEE', self)
+CFONB::OperationDetails.register('FEE', self)
 ```
 
 | Detail Code | Attributes                                                                              | Description                                                          |

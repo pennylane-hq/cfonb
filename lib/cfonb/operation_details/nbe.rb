@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class NBE
+  module OperationDetails
+    class NBE < Base
       ATTRIBUTES = %i[creditor].freeze
 
       def self.apply(operation, line)
         operation.creditor = line.detail.strip
       end
 
-      CFONB::OperationDetail.register('NBE', self)
+      CFONB::OperationDetails.register('NBE', self)
     end
   end
 end

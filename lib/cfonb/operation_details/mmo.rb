@@ -3,8 +3,8 @@
 require 'bigdecimal'
 
 module CFONB
-  module OperationDetail
-    class MMO
+  module OperationDetails
+    class MMO < Base
       ATTRIBUTES = %i[original_currency original_amount exchange_rate].freeze
 
       def self.apply(operation, line)
@@ -22,7 +22,7 @@ module CFONB
         operation.exchange_rate = BigDecimal(exchange_rate_value) / (10**BigDecimal(exchange_rate_scale))
       end
 
-      CFONB::OperationDetail.register('MMO', self)
+      CFONB::OperationDetails.register('MMO', self)
     end
   end
 end

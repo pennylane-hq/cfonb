@@ -2,7 +2,7 @@
 
 module CFONB
   module LineParser
-    class OperationDetail < Base
+    class OperationDetails < Base
       DICTIONARY = [
         ['internal_operation_code', (7..10)],
         ['interbank_operation_code', (32..33)],

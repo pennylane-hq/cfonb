@@ -38,7 +38,7 @@ module CFONB
 
     def merge_detail(line)
       self.raw += "\n#{line.body}"
-      OperationDetail.for(line)&.apply(self, line)
+      OperationDetails.for(line)&.apply(self, line)
     end
 
     def type_code
