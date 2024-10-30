@@ -39,22 +39,22 @@ We aimed at making it as easy as possible to add new details. You just need to d
 CFONB::OperationDetails.register('FEE', self)
 ```
 
-| Detail Code | Attributes                                                                              | Description                                                          |
-| ----------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| FEE         | `fee`, `fee_currency`                                                                   | Represents operation fees the bank is applying                       |
-| LCC         | `unstructured_label`                                                                    | Not structured label line 1 (first 70 characters)                    |
-| LC2         | `unstructured_label_2`                                                                  | Not structured label line 2 (last 70 characters)                     |
-| LCS         | `structured_label`                                                                      | Structured label                                                     |
-| LIB         | `free_label`                                                                            | Free label                                                           |
+| Detail Code | Attributes                                                                              | Description                                                                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| FEE         | `fee`, `fee_currency`                                                                   | Represents operation fees the bank is applying                                                                                              |
+| LCC         | `unstructured_label`                                                                    | Not structured label line 1 (first 70 characters)                                                                                           |
+| LC2         | `unstructured_label_2`                                                                  | Not structured label line 2 (last 70 characters)                                                                                            |
+| LCS         | `structured_label`                                                                      | Structured label                                                                                                                            |
+| LIB         | `free_label`                                                                            | Free label                                                                                                                                  |
 | MMO         | `original_currency`, `original_amount`, `scale`, `exchange_rate`, `exchange_rate_scale` | Amount and currency if it has been converted from a foreign currency. The `original_amount` is unsigned, meaning it is always non-negative. |
-| NBE         | `creditor`                                                                              | Name of the creditor or beneficiary                                  |
-| NPY         | `debtor`                                                                                | Name of the debtor or payer                                          |
-| RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                          |
-| REF         | `operation_reference`                                                                   | Bank operation reference                                             |
-| IPY         | `debtor_identifier`, `debtor_identifier_type`                                           | Debtor identifier and debtor identifier type                         |
-| IBE         | `creditor_identifier`, `creditor_identifier_type`                                       | Creditor identifier and the type of identifier                       |
-| NPO         | `ultimate_debtor`                                                                       | Name of the ultimate debtor or beneficiary                           |
-| NBU         | `ultimate_creditor`                                                                     | Name of the ultimate creditor or payer                               |
+| NBE         | `creditor`                                                                              | Name of the creditor or beneficiary                                                                                                         |
+| NPY         | `debtor`                                                                                | Name of the debtor or payer                                                                                                                 |
+| RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                                                                                                 |
+| REF         | `operation_reference`                                                                   | Bank operation reference                                                                                                                    |
+| IPY         | `debtor_identifier`, `debtor_identifier_type`                                           | Debtor identifier and debtor identifier type                                                                                                |
+| IBE         | `creditor_identifier`, `creditor_identifier_type`                                       | Creditor identifier and the type of identifier                                                                                              |
+| NPO         | `ultimate_debtor`                                                                       | Name of the ultimate debtor or beneficiary                                                                                                  |
+| NBU         | `ultimate_creditor`                                                                     | Name of the ultimate creditor or payer                                                                                                      |
 
 TODO:
 | Detail Code | Attributes | Description |
