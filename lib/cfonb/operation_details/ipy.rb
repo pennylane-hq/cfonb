@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class IPY
+  module OperationDetails
+    class IPY < Base
       ATTRIBUTES = %i[debtor_identifier debtor_identifier_type].freeze
 
       def self.apply(operation, line)
@@ -10,7 +10,7 @@ module CFONB
         operation.debtor_identifier_type = line.detail[35..-1].strip
       end
 
-      CFONB::OperationDetail.register('IPY', self)
+      CFONB::OperationDetails.register('IPY', self)
     end
   end
 end

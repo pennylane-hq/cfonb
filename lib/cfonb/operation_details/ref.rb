@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class RCN
+  module OperationDetails
+    class REF < Base
       using CFONB::Refinements::Strings
 
-      ATTRIBUTES = %i[reference purpose].freeze
+      ATTRIBUTES = %i[reference].freeze
 
       def self.apply(operation, line)
         operation.reference = [
           operation.reference,
-          line.detail[0..34].strip,
+          line.detail.strip,
         ].filter_map(&:presence).join(' - ')
-
-        operation.purpose = line.detail[35..-1]&.strip
       end
 
-      CFONB::OperationDetail.register('RCN', self)
+      CFONB::OperationDetails.register('REF', self)
     end
   end
 end

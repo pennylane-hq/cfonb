@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
+  module OperationDetails
     @details = {}
 
     def self.register(code, klass)

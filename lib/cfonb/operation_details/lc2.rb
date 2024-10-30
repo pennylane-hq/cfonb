@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class LCC
+  module OperationDetails
+    class LC2 < Base
       def self.apply(operation, line)
         operation.label += "\n#{line.detail.strip}"
       end
 
-      CFONB::OperationDetail.register('LCC', self)
+      CFONB::OperationDetails.register('LC2', self)
     end
   end
 end
