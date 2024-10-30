@@ -6,8 +6,10 @@ We aimed here only at the 120 characters version.
 
 What CFONB means ? `Comité Français d’Organisation et de Normalisation Bancaire`
 
-Original Document in French 🇫🇷
-[20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf](https://github.com/pennylane-hq/cfonb/files/13307686/20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf)
+- Original Document in French 🇫🇷 (from July 2004)
+  [20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf](https://github.com/pennylane-hq/cfonb/files/13307686/20130612113947_7_4_Releve_de_Compte_sur_support_informatique_2004_07.pdf)
+- Updated Operation details codes (from August 2007)
+  [Evolutions du Relevé de Compte 120 caractères pour les opérations de virement_2007_08.pdf](https://github.com/user-attachments/files/17554987/Evolutions.du.Releve.de.Compte.120.caracteres.pour.les.operations.de.virement.Aout.2007.pdf)
 
 ## Requirements
 
@@ -27,14 +29,14 @@ gem 'cfonb'
 
 ## Available Operation Details
 
-`OperationDetail` are lines starting with `05`. They aim at providing additional information about the operation.
+`OperationDetails` are lines starting with `05`. They aim at providing additional information about the operation.
 
 Find bellow the list of additional details available for each operation.
 If you encouter new ones, please open an issue or a pull request with the appropriate implementation.
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
-CFONB::OperationDetail.register('FEE', self)
+CFONB::OperationDetails.register('FEE', self)
 ```
 
 | Detail Code | Attributes                                                                              | Description                                                          |
@@ -50,10 +52,14 @@ CFONB::OperationDetail.register('FEE', self)
 | RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                          |
 | REF         | `operation_reference`                                                                   | Bank operation reference                                             |
 | IPY         | `debtor_identifier`, `debtor_identifier_type`                                           | Debtor identifier and debtor identifier type                         |
+| IBE         | `creditor_identifier`, `creditor_identifier_type`                                       | Creditor identifier and the type of identifier                       |
+| NPO         | `ultimate_debtor`                                                                       | Name of the ultimate debtor or beneficiary                           |
+| NBU         | `ultimate_creditor`                                                                     | Name of the ultimate creditor or payer                               |
 
 TODO:
 | Detail Code | Attributes | Description |
 | --- | --- | --- |
+| IPY | `debtor_identifier` | Identifier of the debtor or payer |
 | NPO | `ultimate_debtor` | Name of the ultimate debtor or beneficiary |
 | NBU | `ultimate_creditor` | Name of the ultimate creditor or payer |
 | RET | `unifi_code`, `sit_code`, `payback_label` | Payback informations |

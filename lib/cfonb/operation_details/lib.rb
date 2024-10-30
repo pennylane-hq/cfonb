@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class LIB
-      ATTRIBUTES = %i[free_label].freeze
-
+  module OperationDetails
+    class LIB < Base
       def self.apply(operation, line)
         operation.free_label = if operation.free_label.nil?
           line.detail.strip.to_s
@@ -13,7 +11,7 @@ module CFONB
         end
       end
 
-      CFONB::OperationDetail.register('LIB', self)
+      CFONB::OperationDetails.register('LIB', self)
     end
   end
 end

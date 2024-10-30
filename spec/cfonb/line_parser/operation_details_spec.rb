@@ -2,7 +2,7 @@
 
 require 'cfonb'
 
-describe CFONB::LineParser::OperationDetail do
+describe CFONB::LineParser::OperationDetails do
   describe '.initialize' do
     subject(:line) { described_class.new(input) }
 

@@ -224,6 +224,55 @@ describe CFONB::Operation do
         expect(operation.debtor_identifier_type).to eq(debtor_identifier_type)
       end
     end
+
+    context 'with a IBE detail' do
+      let(:creditor_identifier) { SecureRandom.alphanumeric(35) }
+      let(:creditor_identifier_type) { SecureRandom.alphanumeric(35) }
+
+      let(:detail) do
+        OpenStruct.new(
+          detail_code: 'IBE',
+          detail: "#{creditor_identifier}#{creditor_identifier_type}",
+        )
+      end
+
+      it 'adds the IBE information' do
+        operation.merge_detail(detail)
+
+        expect(operation.creditor_identifier).to eq(creditor_identifier)
+        expect(operation.creditor_identifier_type).to eq(creditor_identifier_type)
+      end
+    end
+
+    context 'with a NPO detail' do
+      let(:detail) do
+        OpenStruct.new(
+          detail_code: 'NPO',
+          detail: 'Patrick                                                               ',
+        )
+      end
+
+      it 'adds the NPO information' do
+        operation.merge_detail(detail)
+
+        expect(operation.ultimate_debtor).to eq('Patrick')
+      end
+    end
+
+    context 'with a NBU detail' do
+      let(:detail) do
+        OpenStruct.new(
+          detail_code: 'NBU',
+          detail: 'Patrick                                                               ',
+        )
+      end
+
+      it 'adds the NBU information' do
+        operation.merge_detail(detail)
+
+        expect(operation.ultimate_creditor).to eq('Patrick')
+      end
+    end
   end
 
   describe '#type_code' do

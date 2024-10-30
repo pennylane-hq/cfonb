@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class LC2
-      ATTRIBUTES = %i[unstructured_label_2].freeze
-
+  module OperationDetails
+    class LC2 < Base
       def self.apply(operation, line)
         operation.unstructured_label_2 = if operation.unstructured_label_2.nil?
           line.detail.strip.to_s
@@ -13,7 +11,7 @@ module CFONB
         end
       end
 
-      CFONB::OperationDetail.register('LC2', self)
+      CFONB::OperationDetails.register('LC2', self)
     end
   end
 end
