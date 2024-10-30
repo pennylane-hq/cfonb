@@ -46,7 +46,7 @@ CFONB::OperationDetails.register('FEE', self)
 | LC2         | `unstructured_label_2`                                                                  | Not structured label line 2 (last 70 characters)                     |
 | LCS         | `structured_label`                                                                      | Structured label                                                     |
 | LIB         | `free_label`                                                                            | Free label                                                           |
-| MMO         | `original_currency`, `original_amount`, `scale`, `exchange_rate`, `exchange_rate_scale` | Amount and currency if it has been converted from a foreign currency |
+| MMO         | `original_currency`, `original_amount`, `scale`, `exchange_rate`, `exchange_rate_scale` | Amount and currency if it has been converted from a foreign currency. The `original_amount` is unsigned, meaning it is always non-negative. |
 | NBE         | `creditor`                                                                              | Name of the creditor or beneficiary                                  |
 | NPY         | `debtor`                                                                                | Name of the debtor or payer                                          |
 | RCN         | `reference`, `purpose`                                                                  | Client reference and Payment nature/purpose                          |

@@ -7,9 +7,9 @@ module CFONB
 
       ATTRIBUTES = %i[reference].freeze
 
-      def self.apply(operation, line)
-        operation.reference = [
-          operation.reference,
+      def self.apply(details, line)
+        details.reference = [
+          details.reference,
           line.detail.strip,
         ].filter_map(&:presence).join(' - ')
       end

@@ -36,16 +36,17 @@ describe CFONB::Parser do
           interbank_code: 'B1',
           internal_code: '9162',
           label: 'PRLV SEPA TEST CABINET',
-          free_label: 'MENSUEAUHTR13133',
           number: 0,
-          reference: 'REFERENCE - OTHER REFERENCE',
-          purpose: 'PURPOSE',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 16),
+        )
+        expect(statements[0].operations[0].details).to have_attributes(
+          free_label: 'MENSUEAUHTR13133',
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
+          purpose: 'PURPOSE',
           debtor: 'INTERNET SFR',
         )
 
@@ -58,14 +59,19 @@ describe CFONB::Parser do
           internal_code: '9162',
           label: 'VIR  SEPA DEMONSTRATION',
           number: 0,
-          reference: 'REFERENCE',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 16),
+        )
+
+        expect(statements[0].operations[1].details).to have_attributes(
+          debtor: 'ELEC ERDF',
+          reference: 'REFERENCE',
+          free_label: nil,
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
-          debtor: 'ELEC ERDF',
+          purpose: nil,
         )
 
         expect(statements[0].operations[2]).to have_attributes(
@@ -77,10 +83,15 @@ describe CFONB::Parser do
           internal_code: '0117',
           label: 'F COMMISSION D INTERVENTION',
           number: 0,
-          reference: '',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
+        )
+
+        expect(statements[0].operations[2].details).to have_attributes(
+          reference: '',
+          free_label: nil,
+          purpose: nil,
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
@@ -107,15 +118,20 @@ describe CFONB::Parser do
           interbank_code: 'A3',
           internal_code: '0158',
           label: 'PRLV SEPA GROUPAMA CEN',
-          free_label: 'P051928612   22793301700040',
           number: 0,
-          reference: '',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
+        )
+
+        expect(statements[1].operations[0].details).to have_attributes(
+          free_label: 'P051928612   22793301700040',
+          reference: '',
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
+          purpose: nil,
+          debtor: nil,
         )
 
         expect(statements[1].operations[1]).to have_attributes(
@@ -127,13 +143,19 @@ describe CFONB::Parser do
           internal_code: '0337',
           label: 'F FRAIS PRLV IMP 97 49EUR',
           number: 0,
-          reference: '',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 15),
+        )
+
+        expect(statements[1].operations[1].details).to have_attributes(
+          reference: '',
+          free_label: nil,
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
+          purpose: nil,
+          debtor: nil,
         )
 
         expect(statements[1].operations[2]).to have_attributes(
@@ -145,13 +167,19 @@ describe CFONB::Parser do
           internal_code: '0117',
           label: 'F COMMISSION D INTERVENTION',
           number: 0,
-          reference: '',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 16),
+        )
+
+        expect(statements[1].operations[2].details).to have_attributes(
+          reference: '',
+          free_label: nil,
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
+          purpose: nil,
+          debtor: nil,
         )
       end
     end
@@ -235,18 +263,20 @@ describe CFONB::Parser do
             interbank_code: 'B1',
             internal_code: '9162',
             label: 'PRLV SEPA TEST CABINET',
-            free_label: 'MENSUEAUHTR13133',
             number: 0,
-            reference: 'REFERENCE - OTHER REFERENCE',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+
+          expect(statements[0].operations[0].details).to have_attributes(
+            free_label: 'MENSUEAUHTR13133',
+            debtor: 'INTERNET SFR',
+            reference: 'REFERENCE - OTHER REFERENCE',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'INTERNET SFR',
           )
-
           expect(statements[0].operations[1]).to have_attributes(
             amount: -10.7,
             currency: 'EUR',
@@ -256,10 +286,13 @@ describe CFONB::Parser do
             internal_code: '9162',
             label: 'VIR  SEPA DEMONSTRATION',
             number: 0,
-            reference: 'REFERENCE',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+
+          expect(statements[0].operations[1].details).to have_attributes(
+            reference: 'REFERENCE',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -275,10 +308,13 @@ describe CFONB::Parser do
             internal_code: '0117',
             label: 'F COMMISSION D INTERVENTION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
+          )
+
+          expect(statements[0].operations[2].details).to have_attributes(
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -305,12 +341,15 @@ describe CFONB::Parser do
             interbank_code: 'A3',
             internal_code: '0158',
             label: 'PRLV SEPA GROUPAMA CEN',
-            free_label: 'P051928612   22793301700040',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
+          )
+
+          expect(statements[1].operations[0].details).to have_attributes(
+            free_label: 'P051928612   22793301700040',
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -325,10 +364,13 @@ describe CFONB::Parser do
             internal_code: '0337',
             label: 'F FRAIS PRLV IMP 97 49EUR',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 15),
+          )
+
+          expect(statements[1].operations[1].details).to have_attributes(
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -343,10 +385,13 @@ describe CFONB::Parser do
             internal_code: '0117',
             label: 'F COMMISSION D INTERVENTION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+
+          expect(statements[1].operations[2].details).to have_attributes(
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -369,14 +414,17 @@ describe CFONB::Parser do
             internal_code: '9162',
             label: 'VIR  SEPA DEMONSTRATION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+
+          expect(statements[0].operations[0].details).to have_attributes(
+            debtor: 'ELEC ERDF',
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -396,14 +444,16 @@ describe CFONB::Parser do
             internal_code: '9162',
             label: 'VIR  SEPA DEMONSTRATION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(statements[0].operations[0].details).to have_attributes(
+            debtor: 'ELEC ERDF',
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -423,14 +473,16 @@ describe CFONB::Parser do
             internal_code: '9162',
             label: 'VIR  SEPA DEMONSTRATION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(statements[0].operations[0].details).to have_attributes(
+            debtor: 'ELEC ERDF',
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'ELEC ERDF',
           )
         end
       end
@@ -450,14 +502,16 @@ describe CFONB::Parser do
             internal_code: '9162',
             label: 'VIR  SEPA DEMONSTRATION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(statements[0].operations[0].details).to have_attributes(
+            debtor: 'ELEC ERDF',
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'ELEC ERDF',
           )
           expect(statements[0].operations[1]).to have_attributes(
             amount: -7.9,
@@ -468,10 +522,12 @@ describe CFONB::Parser do
             internal_code: '0117',
             label: 'F COMMISSION D INTERVENTION',
             number: 0,
-            reference: '',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(statements[0].operations[1].details).to have_attributes(
+            reference: '',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
@@ -508,16 +564,18 @@ describe CFONB::Parser do
           interbank_code: 'B1',
           internal_code: '9162',
           label: 'PRLV SEPA TEST CABINET',
-          free_label: 'MENSUEAUHTR13133',
           number: 0,
-          reference: 'REFERENCE - OTHER REFERENCE',
           rejection_code: '',
           unavailability_code: '0',
           value_date: Date.new(2019, 5, 16),
+        )
+        expect(operation.details).to have_attributes(
+          reference: 'REFERENCE - OTHER REFERENCE',
+          debtor: 'INTERNET SFR',
+          free_label: 'MENSUEAUHTR13133',
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
-          debtor: 'INTERNET SFR',
         )
       end
     end
@@ -569,16 +627,18 @@ describe CFONB::Parser do
             interbank_code: 'B1',
             internal_code: '9162',
             label: 'PRLV SEPA TEST CABINET',
-            free_label: 'MENSUEAUHTR13133',
             number: 0,
-            reference: 'REFERENCE - OTHER REFERENCE',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(operation.details).to have_attributes(
+            reference: 'REFERENCE - OTHER REFERENCE',
+            free_label: 'MENSUEAUHTR13133',
+            debtor: 'INTERNET SFR',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'INTERNET SFR',
           )
         end
       end
@@ -595,16 +655,18 @@ describe CFONB::Parser do
             interbank_code: 'B1',
             internal_code: '9162',
             label: 'PRLV SEPA TEST CABINET',
-            free_label: 'MENSUEAUHTR13133',
             number: 0,
-            reference: 'REFERENCE - OTHER REFERENCE',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+          expect(operation.details).to have_attributes(
+            reference: 'REFERENCE - OTHER REFERENCE',
+            free_label: 'MENSUEAUHTR13133',
+            debtor: 'INTERNET SFR',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'INTERNET SFR',
           )
         end
       end
@@ -629,16 +691,19 @@ describe CFONB::Parser do
             interbank_code: 'B1',
             internal_code: '9162',
             label: 'PRLV SEPA TEST CABINET',
-            free_label: "MENSUEAUHTR13133\nP051928612   22793301700040",
             number: 0,
-            reference: 'REFERENCE - OTHER REFERENCE',
             rejection_code: '',
             unavailability_code: '0',
             value_date: Date.new(2019, 5, 16),
+          )
+
+          expect(operation.details).to have_attributes(
+            reference: 'REFERENCE - OTHER REFERENCE',
+            free_label: "MENSUEAUHTR13133\nP051928612   22793301700040",
+            debtor: 'ELEC ERDF',
             original_currency: nil,
             original_amount: nil,
             exchange_rate: nil,
-            debtor: 'ELEC ERDF',
           )
         end
       end
