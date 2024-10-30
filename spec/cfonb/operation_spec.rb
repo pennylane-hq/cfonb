@@ -3,7 +3,6 @@
 require 'cfonb'
 require 'securerandom'
 require 'ostruct'
-require 'securerandom'
 
 describe CFONB::Operation do
   subject(:operation) { described_class.new(line) }
