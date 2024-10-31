@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
-  module OperationDetail
-    class FEE
+  module OperationDetails
+    class FEE < Base
       ATTRIBUTES = %i[fee fee_currency].freeze
 
       def self.apply(operation, line)
@@ -12,7 +12,7 @@ module CFONB
         operation.fee = BigDecimal(line.detail[4..17]) / (10**scale)
       end
 
-      CFONB::OperationDetail.register('FEE', self)
+      CFONB::OperationDetails.register('FEE', self)
     end
   end
 end
