@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'cfonb'
-require 'ostruct'
 require 'securerandom'
+require 'ostruct'
 
 describe CFONB::Operation do
   subject(:operation) { described_class.new(line) }
@@ -190,6 +190,26 @@ describe CFONB::Operation do
 
         expect(operation.fee_currency).to eq('EUR')
         expect(operation.fee).to eq(7.4)
+      end
+    end
+
+    context 'with a IPY detail' do
+      let(:debtor_identifier) { SecureRandom.alphanumeric(35) }
+      let(:debtor_identifier_type) { SecureRandom.alphanumeric(35) }
+
+      let(:detail) do
+        OpenStruct.new(
+          body: "0530004411001871EUR2 0001016255614090823     IPY#{debtor_identifier}#{debtor_identifier_type}",
+          detail_code: 'IPY',
+          detail: "#{debtor_identifier}#{debtor_identifier_type}",
+        )
+      end
+
+      it 'adds the debtor_identifier' do
+        operation.merge_detail(detail)
+
+        expect(operation.debtor_identifier).to eq(debtor_identifier)
+        expect(operation.debtor_identifier_type).to eq(debtor_identifier_type)
       end
     end
 

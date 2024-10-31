@@ -9,7 +9,7 @@ module CFONB
         ['rejection_code', (40..41)],
         ['value_date', (42..47), proc { |value, instance| instance.send(:parse_date, value) }],
         ['label', (48..79)],
-        ['number', (81..87), proc { _1.to_i }],
+        ['number', (81..87), proc { _1.to_i }], # rubocop:disable Style/SymbolProc
         ['exoneration_code', 88],
         ['unavailability_code', 89],
         ['reference', (104..119)],
