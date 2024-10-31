@@ -30,9 +30,11 @@ gem 'cfonb'
 ## Available Operation Details
 
 `OperationDetails` are lines starting with `05`. They aim at providing additional information about the operation.
+Below is the list of additional details available for each operation.
 
-Find bellow the list of additional details available for each operation.
-If you encouter new ones, please open an issue or a pull request with the appropriate implementation.
+These details can be accessed through `operation.details`, which will provide all the attributes. To fetch a specific attribute, you can use `operation.details.attribute`. For example, `operation.details.unstructured_label`.
+
+If you encounter new ones, please open an issue or a pull request with the appropriate implementation.
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
