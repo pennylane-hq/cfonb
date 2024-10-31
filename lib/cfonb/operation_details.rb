@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+require_relative 'details'
+
 module CFONB
   module OperationDetails
     @details = {}
 
     def self.register(code, klass)
       if klass.const_defined?(:ATTRIBUTES)
-        Operation.class_eval do
+        CFONB::Details.class_eval do
           attr_accessor(*klass::ATTRIBUTES)
         end
       end

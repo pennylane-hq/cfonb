@@ -6,8 +6,8 @@ module CFONB
       def self.inherited(base)
         base.singleton_class.prepend(
           Module.new do
-            def apply(operation, line)
-              operation.instance_variable_set(:"@#{line.detail_code}", line.detail)
+            def apply(details, line)
+              details.instance_variable_set(:"@#{line.detail_code}", line.detail)
 
               super
             end

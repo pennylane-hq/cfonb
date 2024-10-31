@@ -5,8 +5,8 @@ module CFONB
     class NBE < Base
       ATTRIBUTES = %i[creditor].freeze
 
-      def self.apply(operation, line)
-        operation.creditor = line.detail.strip
+      def self.apply(details, line)
+        details.creditor = line.detail.strip
       end
 
       CFONB::OperationDetails.register('NBE', self)

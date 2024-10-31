@@ -5,9 +5,9 @@ module CFONB
     class IPY < Base
       ATTRIBUTES = %i[debtor_identifier debtor_identifier_type].freeze
 
-      def self.apply(operation, line)
-        operation.debtor_identifier = line.detail[0..34].strip
-        operation.debtor_identifier_type = line.detail[35..-1].strip
+      def self.apply(details, line)
+        details.debtor_identifier = line.detail[0..34].strip
+        details.debtor_identifier_type = line.detail[35..-1].strip
       end
 
       CFONB::OperationDetails.register('IPY', self)

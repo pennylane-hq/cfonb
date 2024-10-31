@@ -5,8 +5,8 @@ module CFONB
     class NPY < Base
       ATTRIBUTES = %i[debtor].freeze
 
-      def self.apply(operation, line)
-        operation.debtor = line.detail.strip
+      def self.apply(details, line)
+        details.debtor = line.detail.strip
       end
 
       CFONB::OperationDetails.register('NPY', self)

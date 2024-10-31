@@ -5,8 +5,8 @@ module CFONB
     class NBU < Base
       ATTRIBUTES = %i[ultimate_creditor].freeze
 
-      def self.apply(operation, line)
-        operation.ultimate_creditor = line.detail.strip
+      def self.apply(details, line)
+        details.ultimate_creditor = line.detail.strip
       end
 
       CFONB::OperationDetails.register('NBU', self)
