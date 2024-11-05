@@ -2,8 +2,5 @@
 
 module CFONB
   class Details
-    def initialize(reference)
-      @reference = reference
-    end
   end
 end

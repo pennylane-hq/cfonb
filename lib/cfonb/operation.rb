@@ -34,7 +34,8 @@ module CFONB
       self.value_date = line.value_date
       self.label = line.label.strip
       self.number = line.number
-      self.details = Details.new(line.reference)
+      self.reference = line.reference
+      self.details = Details.new
     end
 
     def merge_detail(line)

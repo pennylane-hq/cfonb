@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.name                       = 'cfonb'
   s.version                    = '1.0.0'
-  s.required_ruby_version      = '>= 3.3'
+  s.required_ruby_version      = '>= 3.2'
   s.summary                    = 'CFONB parser'
   s.description                = 'An easy to use CFONB format parser'
   s.authors                    = ['Johan Le Bray', 'Frantisek Rokusek']

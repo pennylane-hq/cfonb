@@ -163,10 +163,10 @@ describe CFONB::Operation do
         )
       end
 
-      it 'adds the reference information' do
+      it 'adds the client reference information' do
         operation.merge_detail(detail)
 
-        expect(operation.details.reference).to eq('42 - SWILE-CMD-TR-YPDHMA')
+        expect(operation.details.client_reference).to eq('SWILE-CMD-TR-YPDHMA')
         expect(operation.details.purpose).to eq('TICKET RESTO')
       end
     end
@@ -180,10 +180,10 @@ describe CFONB::Operation do
         )
       end
 
-      it 'adds the reference information' do
+      it 'adds the operation reference information' do
         operation.merge_detail(detail)
 
-        expect(operation.details.reference).to eq('42 - PENNYLANE B13A93908C36C82DF5C319/1')
+        expect(operation.details.operation_reference).to eq('PENNYLANE B13A93908C36C82DF5C319/1')
       end
     end
 
