@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
+  class Details; end
+
   class Operation
     BASE_ATTRIBUTES = %i[
       raw
