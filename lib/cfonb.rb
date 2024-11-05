@@ -8,6 +8,7 @@ require_relative 'cfonb/error'
 require_relative 'cfonb/parser'
 require_relative 'cfonb/statement'
 require_relative 'cfonb/operation'
+require_relative 'cfonb/details'
 require_relative 'cfonb/operation_details'
 
 require_relative 'cfonb/line_parser'

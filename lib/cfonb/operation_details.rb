@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'details'
-
 module CFONB
   module OperationDetails
     @details = {}
