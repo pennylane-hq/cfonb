@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CFONB
-  class Details; end
+  Details = Class.new
 
   class Operation
     BASE_ATTRIBUTES = %i[
