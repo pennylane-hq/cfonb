@@ -6,7 +6,7 @@ module CFONB
 
     def self.register(code, klass)
       if klass.const_defined?(:ATTRIBUTES)
-        Operation.class_eval do
+        CFONB::Details.class_eval do
           attr_accessor(*klass::ATTRIBUTES)
         end
       end

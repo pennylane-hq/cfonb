@@ -37,6 +37,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.details.free_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -50,6 +53,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.details.unstructured_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -63,6 +69,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.details.unstructured_label_2).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -76,6 +85,9 @@ describe CFONB::Operation do
 
         expect(operation.label).to eq(<<~TXT.strip)
           A random operation label
+        TXT
+
+        expect(operation.details.structured_label).to eq(<<~TXT.strip)
           Extra label
         TXT
       end
@@ -87,9 +99,9 @@ describe CFONB::Operation do
       it 'Adds the original currency information' do
         operation.merge_detail(detail)
 
-        expect(operation).to have_attributes(
+        expect(operation.details).to have_attributes(
           original_currency: 'USD',
-          original_amount: -12.34,
+          original_amount: 12.34,
           exchange_rate: nil,
         )
       end
@@ -100,9 +112,9 @@ describe CFONB::Operation do
         it 'Adds the original currency information' do
           operation.merge_detail(detail)
 
-          expect(operation).to have_attributes(
+          expect(operation.details).to have_attributes(
             original_currency: 'USD',
-            original_amount: -8358,
+            original_amount: 8358,
             exchange_rate: 1.077,
           )
         end
@@ -113,10 +125,9 @@ describe CFONB::Operation do
 
         it 'Adds the original currency information' do
           operation.merge_detail(detail)
-
-          expect(operation).to have_attributes(
+          expect(operation.details).to have_attributes(
             original_currency: 'EUR',
-            original_amount: -18_756.25,
+            original_amount: 18_756.25,
             exchange_rate: nil,
           )
         end
@@ -129,7 +140,7 @@ describe CFONB::Operation do
       it 'Adds the debtor information' do
         operation.merge_detail(detail)
 
-        expect(operation).to have_attributes(debtor: 'Patrick')
+        expect(operation.details).to have_attributes(debtor: 'Patrick')
       end
     end
 
@@ -139,7 +150,7 @@ describe CFONB::Operation do
       it 'Adds the creditor information' do
         operation.merge_detail(detail)
 
-        expect(operation).to have_attributes(creditor: 'Jean-Pierre')
+        expect(operation.details).to have_attributes(creditor: 'Jean-Pierre')
       end
     end
 
@@ -152,11 +163,11 @@ describe CFONB::Operation do
         )
       end
 
-      it 'adds the reference information' do
+      it 'adds the client reference information' do
         operation.merge_detail(detail)
 
-        expect(operation.reference).to eq('42 - SWILE-CMD-TR-YPDHMA')
-        expect(operation.purpose).to eq('TICKET RESTO')
+        expect(operation.details.client_reference).to eq('SWILE-CMD-TR-YPDHMA')
+        expect(operation.details.purpose).to eq('TICKET RESTO')
       end
     end
 
@@ -169,10 +180,10 @@ describe CFONB::Operation do
         )
       end
 
-      it 'adds the reference information' do
+      it 'adds the operation reference information' do
         operation.merge_detail(detail)
 
-        expect(operation.reference).to eq('42 - PENNYLANE B13A93908C36C82DF5C319/1')
+        expect(operation.details.operation_reference).to eq('PENNYLANE B13A93908C36C82DF5C319/1')
       end
     end
 
@@ -188,8 +199,8 @@ describe CFONB::Operation do
       it 'adds the fee information' do
         operation.merge_detail(detail)
 
-        expect(operation.fee_currency).to eq('EUR')
-        expect(operation.fee).to eq(7.4)
+        expect(operation.details.fee_currency).to eq('EUR')
+        expect(operation.details.fee).to eq(7.4)
       end
     end
 
@@ -208,8 +219,8 @@ describe CFONB::Operation do
       it 'adds the debtor_identifier' do
         operation.merge_detail(detail)
 
-        expect(operation.debtor_identifier).to eq(debtor_identifier)
-        expect(operation.debtor_identifier_type).to eq(debtor_identifier_type)
+        expect(operation.details.debtor_identifier).to eq(debtor_identifier)
+        expect(operation.details.debtor_identifier_type).to eq(debtor_identifier_type)
       end
     end
 
@@ -227,8 +238,8 @@ describe CFONB::Operation do
       it 'adds the IBE information' do
         operation.merge_detail(detail)
 
-        expect(operation.creditor_identifier).to eq(creditor_identifier)
-        expect(operation.creditor_identifier_type).to eq(creditor_identifier_type)
+        expect(operation.details.creditor_identifier).to eq(creditor_identifier)
+        expect(operation.details.creditor_identifier_type).to eq(creditor_identifier_type)
       end
     end
 
@@ -243,7 +254,7 @@ describe CFONB::Operation do
       it 'adds the NPO information' do
         operation.merge_detail(detail)
 
-        expect(operation.ultimate_debtor).to eq('Patrick')
+        expect(operation.details.ultimate_debtor).to eq('Patrick')
       end
     end
 
@@ -258,7 +269,7 @@ describe CFONB::Operation do
       it 'adds the NBU information' do
         operation.merge_detail(detail)
 
-        expect(operation.ultimate_creditor).to eq('Patrick')
+        expect(operation.details.ultimate_creditor).to eq('Patrick')
       end
     end
   end

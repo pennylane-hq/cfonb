@@ -3,8 +3,10 @@
 module CFONB
   module OperationDetails
     class LCS < Base
-      def self.apply(operation, line)
-        operation.label += "\n#{line.detail[0..35].strip}"
+      ATTRIBUTES = %i[structured_label].freeze
+
+      def self.apply(details, line)
+        details.structured_label = line.detail[0..35].strip
       end
 
       CFONB::OperationDetails.register('LCS', self)

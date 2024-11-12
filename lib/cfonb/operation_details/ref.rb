@@ -5,13 +5,10 @@ module CFONB
     class REF < Base
       using CFONB::Refinements::Strings
 
-      ATTRIBUTES = %i[reference].freeze
+      ATTRIBUTES = %i[operation_reference].freeze
 
-      def self.apply(operation, line)
-        operation.reference = [
-          operation.reference,
-          line.detail.strip,
-        ].filter_map(&:presence).join(' - ')
+      def self.apply(details, line)
+        details.operation_reference = line.detail.strip
       end
 
       CFONB::OperationDetails.register('REF', self)
