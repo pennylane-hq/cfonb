@@ -49,6 +49,11 @@ describe CFONB::Parser do
           exchange_rate: nil,
           purpose: 'PURPOSE',
           debtor: 'INTERNET SFR',
+          unknown: {
+            'AAA' => "INTERNETA AAA\nINTERNETA ABB",
+            'BBB' => 'INTERNETE BBB',
+            'CCC' => 'INTERNETI CCC',
+          },
         )
 
         expect(statements[0].operations[1]).to have_attributes(

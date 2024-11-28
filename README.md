@@ -33,8 +33,9 @@ gem 'cfonb'
 Below is the list of additional details available for each operation.
 
 These details can be accessed through `operation.details`, which will provide all the attributes. To fetch a specific attribute, you can use `operation.details.attribute`. For example, `operation.details.unstructured_label`. Ultimately, you can also access the 70 characters of the detail by using its code like `operation.details.mmo`
+All unmapped details can be accessed via `details.unknown` which will return the codes and the corresponding line details.
 
-If you encounter new ones, please open an issue or a pull request with the appropriate implementation.
+If you encounter new and relevant ones, please open an issue or a pull request with the appropriate implementation.
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
