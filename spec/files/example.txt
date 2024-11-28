@@ -2,6 +2,7 @@
 
 0415589916200000EUR2 98765432100B1160519  160519PRLV SEPA TEST CABINET           0000000000000000000322J                
 0515589916200000EUR2 98765432100B1160519     LIBMENSUEAUHTR13133                                                        
+0515589916200000EUR2 98765432100B1160519     LIBMENSUEAUHTR13DUP                                                        
 0515589916200000EUR2 98765432100B1160519     REFREFERENCE                                                               
 0515589916200000EUR2 98765432100B1160519     RCNOTHER REFERENCE                    PURPOSE                              
 0515589916200000EUR2 98765432100B1160519     NPYINTERNET SFR                                                            

@@ -43,7 +43,7 @@ describe CFONB::Parser do
           reference: '',
         )
         expect(statements[0].operations[0].details).to have_attributes(
-          free_label: 'MENSUEAUHTR13133',
+          free_label: "MENSUEAUHTR13133\nMENSUEAUHTR13DUP",
           original_currency: nil,
           original_amount: nil,
           exchange_rate: nil,
@@ -272,7 +272,7 @@ describe CFONB::Parser do
 
           expect(statements[0].operations[0].details).to have_attributes(
             operation_reference: 'REFERENCE',
-            free_label: 'MENSUEAUHTR13133',
+            free_label: "MENSUEAUHTR13133\nMENSUEAUHTR13DUP",
             debtor: 'INTERNET SFR',
             client_reference: 'OTHER REFERENCE',
             original_currency: nil,
@@ -705,7 +705,7 @@ describe CFONB::Parser do
           expect(operation.details).to have_attributes(
             operation_reference: 'REFERENCE',
             client_reference: 'OTHER REFERENCE',
-            free_label: "MENSUEAUHTR13133\nP051928612   22793301700040",
+            free_label: "MENSUEAUHTR13133\nMENSUEAUHTR13DUP\nP051928612   22793301700040",
             debtor: 'ELEC ERDF',
             original_currency: nil,
             original_amount: nil,
