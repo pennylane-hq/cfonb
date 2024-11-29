@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module CFONB
+  Details = Class.new
+
   class Operation
     BASE_ATTRIBUTES = %i[
       raw
@@ -16,6 +18,7 @@ module CFONB
       rejection_code
       unavailability_code
       value_date
+      details
     ].freeze
 
     attr_accessor(*BASE_ATTRIBUTES)
@@ -34,11 +37,13 @@ module CFONB
       self.label = line.label.strip
       self.number = line.number
       self.reference = line.reference
+      self.details = Details.new
     end
 
     def merge_detail(line)
       self.raw += "\n#{line.body}"
-      OperationDetails.for(line)&.apply(self, line)
+
+      OperationDetails.for(line)&.apply(details, line)
     end
 
     def type_code
