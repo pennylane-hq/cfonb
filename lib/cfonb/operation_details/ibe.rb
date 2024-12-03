@@ -7,7 +7,7 @@ module CFONB
 
       def self.apply(details, line)
         details.creditor_identifier = line.detail[0..34].strip
-        details.creditor_identifier_type = line.detail[35..-1].strip
+        details.creditor_identifier_type = line.detail[35..-1]&.strip
       end
 
       CFONB::OperationDetails.register('IBE', self)
