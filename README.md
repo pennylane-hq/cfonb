@@ -38,6 +38,7 @@ All unmapped details can be accessed via `details.unknown` which are stored in a
 to get the data for the unknown detail_code `AAA` the call would be `details.unknown['AAA']`.
 
 Object example:
+
 ```
 #<CFONB::Details:0x0000
  @AAA="UNKNOWN DETAIL INFO",
