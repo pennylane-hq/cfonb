@@ -32,6 +32,7 @@ require_relative 'cfonb/operation_details/fee'
 require_relative 'cfonb/operation_details/ibe'
 require_relative 'cfonb/operation_details/npo'
 require_relative 'cfonb/operation_details/nbu'
+require_relative 'cfonb/operation_details/unknown'
 
 module CFONB
   def self.parse(input, optimistic: false)

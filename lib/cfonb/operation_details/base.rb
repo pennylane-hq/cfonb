@@ -7,9 +7,22 @@ module CFONB
         base.singleton_class.prepend(
           Module.new do
             def apply(details, line)
-              details.instance_variable_set(:"@#{line.detail_code}", line.detail)
+              code = :"@#{line.detail_code}"
+              details.instance_variable_set(code, instance_value(details, line, code))
 
               super
+            end
+
+            private
+
+            def append_detail?(details, line, code)
+              details.instance_variable_defined?(code) && line.detail.is_a?(String)
+            end
+
+            def instance_value(details, line, code)
+              return line.detail unless append_detail?(details, line, code)
+
+              details.instance_variable_get(code) + "\n#{line.detail}"
             end
           end,
         )

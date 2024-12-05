@@ -272,6 +272,29 @@ describe CFONB::Operation do
         expect(operation.details.ultimate_creditor).to eq('Patrick')
       end
     end
+
+    context 'with an unknown detail' do
+      let(:detail) do
+        OpenStruct.new(
+          body: '0530004411001871EUR2 0001016255614090823     AAAEUR200000000000740',
+          detail_code: 'AAA',
+          detail: 'EUR200000000000740',
+        )
+      end
+
+      it 'adds the detail to the unknown details hash' do
+        operation.merge_detail(detail)
+
+        expect(operation.details.unknown).to eq({ 'AAA' => 'EUR200000000000740' })
+      end
+
+      it 'updates the current details in case of duplicated codes' do
+        operation.merge_detail(detail)
+        operation.merge_detail(detail)
+
+        expect(operation.details.unknown).to eq({ 'AAA' => "EUR200000000000740\nEUR200000000000740" })
+      end
+    end
   end
 
   describe '#type_code' do

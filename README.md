@@ -32,9 +32,30 @@ gem 'cfonb'
 `OperationDetails` are lines starting with `05`. They aim at providing additional information about the operation.
 Below is the list of additional details available for each operation.
 
-These details can be accessed through `operation.details`, which will provide all the attributes. To fetch a specific attribute, you can use `operation.details.attribute`. For example, `operation.details.unstructured_label`. Ultimately, you can also access the 70 characters of the detail by using its code like `operation.details.mmo`
+These details can be accessed through `operation.details`, which will provide all the attributes. To fetch a specific attribute, you can use `operation.details.attribute`. For example, `operation.details.unstructured_label`. Ultimately, you can also access the 70 characters of the detail by using its code like `operation.details.mmo`.
 
-If you encounter new ones, please open an issue or a pull request with the appropriate implementation.
+All unmapped details can be accessed via `details.unknown` which are stored in a hash with the format `'detail_code' => 'line_detail'`, so
+to get the data for the unknown detail_code `AAA` the call would be `details.unknown['AAA']`.
+
+Object example:
+
+```
+#<CFONB::Details:0x0000
+ @AAA="UNKNOWN DETAIL INFO",
+ @LIB="MENSUEAUHTR12345",
+ @NPY="INTERNET SFR",
+ @RCN="OTHER REFERENCE                    PURPOSE",
+ @REF="REFERENCE",
+ @client_reference="OTHER REFERENCE",
+ @debtor="INTERNET SFR",
+ @free_label="MENSUEAUHTR12345",
+ @operation_reference="REFERENCE",
+ @purpose="PURPOSE",
+ @unknown={"AAA"=>"UNKNOWN DETAIL INFO"}
+>
+```
+
+If you encounter new and relevant ones, please open an issue or a pull request with the appropriate implementation.
 We aimed at making it as easy as possible to add new details. You just need to do the following on initialization:
 
 ```ruby
@@ -57,14 +78,6 @@ CFONB::OperationDetails.register('FEE', self)
 | NPY         | `debtor`                                                | Name of the debtor or payer                                                                                                                 |
 | RCN         | `client_reference`, `purpose`                           | Client reference and Payment nature/purpose                                                                                                 |
 | REF         | `operation_reference`                                   | Bank operation reference                                                                                                                    |
-
-TODO:
-| Detail Code | Attributes | Description |
-| --- | --- | --- |
-| RET | `unifi_code`, `sit_code`, `payback_label` | Payback informations |
-| CBE | `creditor_account` | Account of the creditor or beneficiary |
-| BDB | `creditor_bank` | Bank of the creditor or beneficiary |
-| LEM | `issuer_label` | Issuer Label |
 
 ## Usage
 
