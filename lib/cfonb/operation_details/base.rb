@@ -7,7 +7,7 @@ module CFONB
         base.singleton_class.prepend(
           Module.new do
             def apply(details, line)
-              code = :"@#{line.detail_code}"
+              code = :"@#{line.detail_code.gsub(' ', '_')}"
               details.instance_variable_set(code, instance_value(details, line, code))
 
               super

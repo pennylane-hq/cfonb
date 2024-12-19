@@ -15,7 +15,7 @@ module CFONB
     end
 
     def self.for(line)
-      return unless line.respond_to?(:detail_code)
+      return unless line.respond_to?(:detail_code) && line.detail_code != ''
 
       @details[line.detail_code] || Unknown
     end
