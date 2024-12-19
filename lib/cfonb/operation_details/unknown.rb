@@ -7,7 +7,7 @@ module CFONB
 
       def self.apply(details, line)
         details.unknown ||= {}
-        code = line.detail_code
+        code = line.detail_code.gsub(' ', '_')
 
         details.unknown[code] =
           if details.unknown[code] && line.detail.is_a?(String)

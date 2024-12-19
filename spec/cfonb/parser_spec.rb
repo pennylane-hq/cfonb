@@ -53,6 +53,7 @@ describe CFONB::Parser do
             'AAA' => "INTERNETA AAA\nINTERNETA ABB",
             'BBB' => 'INTERNETE BBB',
             'CCC' => 'INTERNETI CCC',
+            'N_Y' => 'EXAMPLE WITH EMPTY SPACE',
           },
         )
 
