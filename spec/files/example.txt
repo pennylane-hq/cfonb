@@ -10,6 +10,8 @@
 0515589916200000EUR2 98765432100B1160519     AAAINTERNETA ABB                                                           
 0515589916200000EUR2 98765432100B1160519     BBBINTERNETE BBB                                                           
 0515589916200000EUR2 98765432100B1160519     CCCINTERNETI CCC                                                           
+0515589916200000EUR2 98765432100B1160519                                                                                
+0515589916200000EUR2 98765432100B1160519     N YEXAMPLE WITH EMPTY SPACE                                                
 
 0415589916200000EUR2 98765432100B1160519  160519VIR  SEPA DEMONSTRATION          0000000000000000000107}REFERENCE       
 0515589916200000EUR2 98765432100B1160519     NPYELEC ERDF                                                               
