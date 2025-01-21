@@ -41,7 +41,6 @@ Object example:
 
 ```
 #<CFONB::Details:0x0000
- @AAA="UNKNOWN DETAIL INFO",
  @LIB="MENSUEAUHTR12345",
  @NPY="INTERNET SFR",
  @RCN="OTHER REFERENCE                    PURPOSE",

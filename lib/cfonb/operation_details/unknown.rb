@@ -2,11 +2,14 @@
 
 module CFONB
   module OperationDetails
-    class Unknown < Base
-      ATTRIBUTES = %i[unknown].freeze
-
+    class Unknown
       def self.apply(details, line)
-        details.unknown ||= {}
+        unless details.instance_variable_defined?(:@unknown)
+          details.instance_variable_set(:@unknown, {})
+
+          details.class.attr_accessor :unknown
+        end
+
         code = line.detail_code.gsub(' ', '_')
 
         details.unknown[code] =

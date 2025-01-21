@@ -54,6 +54,7 @@ describe CFONB::Parser do
             'BBB' => 'INTERNETE BBB',
             'CCC' => 'INTERNETI CCC',
             'N_Y' => 'EXAMPLE WITH EMPTY SPACE',
+            '2\'C' => 'EXAMPLE WITH OTHER COMBINATIONS',
           },
         )
 
