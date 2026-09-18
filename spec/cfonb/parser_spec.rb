@@ -192,6 +192,37 @@ describe CFONB::Parser do
       end
     end
 
+    context 'with lines shorter than 120 characters' do
+      # Some banks/intermediaries strip the trailing whitespace of each line,
+      # making them shorter than the 120 characters expected by the standard.
+      let(:input) { File.read('spec/files/example.txt').gsub(/ +$/, '') }
+
+      it 'parses the operations instead of silently dropping them' do
+        expect(statements).to contain_exactly(
+          an_instance_of(CFONB::Statement),
+          an_instance_of(CFONB::Statement),
+        )
+
+        expect(statements[0].operations.size).to eq(3)
+        expect(statements[1].operations.size).to eq(3)
+
+        expect(statements[0].operations[0]).to have_attributes(
+          amount: -32.21,
+          currency: 'EUR',
+          date: Date.new(2019, 5, 16),
+          exoneration_code: '0',
+          interbank_code: 'B1',
+          internal_code: '9162',
+          label: 'PRLV SEPA TEST CABINET',
+          number: 0,
+          rejection_code: '',
+          unavailability_code: '0',
+          value_date: Date.new(2019, 5, 16),
+          reference: '',
+        )
+      end
+    end
+
     context 'with an operation out of a statement' do
       let(:input) { File.read('spec/files/operation_out_of_statement.txt') }
 

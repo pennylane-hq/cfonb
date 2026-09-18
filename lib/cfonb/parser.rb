@@ -41,11 +41,11 @@ module CFONB
 
     def each_line
       input.each_line do |line|
-        (line.size / 120).times do |index|
-          start = index * 120
-          finish = start + 119
+        line = line.chomp
+        next if line.strip.empty?
 
-          yield line[start..finish]
+        (line.size / 120.0).ceil.times do |index|
+          yield line[index * 120, 120].to_s.ljust(120)
         end
       end
     end
